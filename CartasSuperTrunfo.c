@@ -154,7 +154,7 @@ int main (){
     printf("| Área: %-31s |\n", str_area1); // Imprimindo a frase montada
     printf("| PIB: %-32s |\n", str_pib1);   // Imprimindo a frase montada
     printf("| Nº de Pontos Turísticos: %-11d |\n", n_pontos1);
-    printf("| Dens. Populacional: %-17s|\n", str_densi1);
+    printf("| Dens. Populacional: %-17s |\n", str_densi1);
     printf("| PIB per Capita: R$%-18.2f |\n", pib_pc1);
     printf("========================================\n");
 
