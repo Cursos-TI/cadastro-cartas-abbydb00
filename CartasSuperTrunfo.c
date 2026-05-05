@@ -1,4 +1,4 @@
-//Nivel Novato
+//Nivel Aventureiro
 
 /* 
     //CADA CARTA DEVERÁ CONTER
@@ -34,14 +34,20 @@ int main (){
     char estado1, cod_carta1[3], nome_cidade1[20];
     int populacao1, n_pontos1;
     float area1, pib1;
+    float densidade1, pib_pc1;
+
     // -- CARTA 2 --
     char estado2, cod_carta2[3], nome_cidade2[20];
     int populacao2, n_pontos2;
     float area2, pib2;
+    float densidade2, pib_pc2;
+
+
 
     //Organização Interface da Carta com sprintf
     char str_area1[40], str_pib1[40];
     char str_area2[40], str_pib2[40];
+    char str_densi1[40], str_densi2[40];
 
 
     // Entrada de Dados
@@ -76,6 +82,10 @@ int main (){
     printf("\nDigite o número de pontos turistícos da cidade: ");
     scanf("%d", &n_pontos1);
 
+    // Calculo Densidade Populacional CARTA 1 com conversão de dados
+    densidade1 = (float) populacao1 / area1;
+    // Calculo PIB Per Capita CARTA 1 com conversão de dados
+    pib_pc1 = (float) (pib1 * 1000000000.0) / populacao1;
 
     // -- CARTA 2 --
     // Orientações
@@ -107,6 +117,11 @@ int main (){
     printf("\nDigite o número de pontos turistícos da cidade: ");
     scanf("%d", &n_pontos2);
 
+    // Calculo Densidade Populacional CARTA 2 com conversão de dados
+    densidade2 = (float) populacao2 / area2;
+    // Calculo PIB Per Capita CARTA 2 com conversão de dados
+    pib_pc2 = (float) (pib2 * 1000000000.0) / populacao2;  
+
     // Organização Interface Carta dentro da frase com spritf
     /*
     O sprintf faz exatamente o que o printf faz, mas ele não
@@ -116,12 +131,14 @@ int main (){
     */
 
     // Montando as frases da Carta 1
-    sprintf(str_area1, "%.2f km²", area1);
-    sprintf(str_pib1, "R$ %.2f bilhões", pib1);
+    sprintf(str_area1, "%.2fkm²", area1);
+    sprintf(str_pib1, "R$ %.2fbilhões", pib1);
+    sprintf(str_densi1, "%.2fhab/km²", densidade1);
 
     // Montando as frases da Carta 2
-    sprintf(str_area2, "%.2f km²", area2);
-    sprintf(str_pib2, "R$ %.2f bilhões", pib2);
+    sprintf(str_area2, "%.2fkm²", area2);
+    sprintf(str_pib2, "R$ %.2fbilhões", pib2);
+    sprintf(str_densi2, "%.2fhab/km²", densidade2);
 
 
 
@@ -137,6 +154,8 @@ int main (){
     printf("| Área: %-31s |\n", str_area1); // Imprimindo a frase montada
     printf("| PIB: %-32s |\n", str_pib1);   // Imprimindo a frase montada
     printf("| Nº de Pontos Turísticos: %-11d |\n", n_pontos1);
+    printf("| Dens. Populacional: %-17s|\n", str_densi1);
+    printf("| PIB per Capita: R$%-18.2f |\n", pib_pc1);
     printf("========================================\n");
 
     // -- CARTA 2 --
@@ -148,6 +167,8 @@ int main (){
     printf("| Área: %-31s |\n", str_area2); // Imprimindo a frase montada
     printf("| PIB: %-32s |\n", str_pib2);   // Imprimindo a frase montada
     printf("| Nº de Pontos Turísticos: %-11d |\n", n_pontos2);
+    printf("| Dens. Populacional: %-17s |\n", str_densi2);
+    printf("| PIB per Capita: R$%-18.2f |\n", pib_pc2);
     printf("========================================\n");
 
     return 0;
