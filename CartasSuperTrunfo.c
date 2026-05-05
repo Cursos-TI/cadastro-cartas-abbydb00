@@ -26,6 +26,7 @@
 */
 
 #include <stdio.h>
+#include <string.h> // Biblioteca adicionada para manipular a string do fgets
 
 int main (){
     // Declarações de Variaveis
@@ -55,9 +56,13 @@ int main (){
     // Código CARTA 1
     printf("\nDigite o código da cidade (Atribua a cidade 2 digitos entre 01 e 04): ");
     scanf("%s", cod_carta1);
-    // Nome da Cidade CARTA 1
-    printf("\nDigite o nome da cidade: ");
-    scanf("%s", nome_cidade1);
+
+    // Nome da Cidade CARTA 1 (Usando fgets)
+    printf("Digite o nome da cidade: ");
+    getchar(); // Limpa o "Enter" que ficou na memória do teclado
+    fgets(nome_cidade1, 20, stdin); // Lê a frase inteira com segurança
+    nome_cidade1[strcspn(nome_cidade1, "\n")] = '\0'; // Remove o "Enter" do final da frase
+    
     // População CARTA 1
     printf("\nDigite a população da cidade: ");
     scanf("%d", &populacao1);
@@ -82,9 +87,13 @@ int main (){
     // Código CARTA 2
     printf("\nDigite o código da cidade (Atribua a cidade 2 digitos entre 01 e 04): ");
     scanf("%s", cod_carta2);
-    // Nome da Cidade CARTA 2
-    printf("\nDigite o nome da cidade: ");
-    scanf("%s", nome_cidade2);
+
+    // Nome da Cidade CARTA 2 (Usando fgets)
+    printf("Digite o nome da cidade: ");
+    getchar(); // Limpa o "Enter" que ficou na memória do teclado
+    fgets(nome_cidade2, 20, stdin); // Lê a frase inteira com segurança
+    nome_cidade2[strcspn(nome_cidade2, "\n")] = '\0'; // Remove o "Enter" do final da frase
+
     // População CARTA 2
     printf("\nDigite a população da cidade: ");
     scanf("%d", &populacao2);
