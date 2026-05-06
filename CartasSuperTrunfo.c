@@ -163,9 +163,9 @@ int main (){
     printf("| Área: %-31s |\n", str_area1); // Imprimindo a frase montada
     printf("| PIB: %-32s |\n", str_pib1);   // Imprimindo a frase montada
     printf("| Nº de Pontos Turísticos: %-11d |\n", n_pontos1);
-    printf("| Dens. Populacional: %-18s |\n", str_densi1);
-    printf("| PIB per Capita: R$%-18.2f |\n", pib_pc1);
-    printf("| SuperPoder %-24.2f |\n", superpoder1);
+    printf("| Dens. Populacional: %-17s |\n", str_densi1);
+    printf("| PIB per Capita: R$ %-17.2f |\n", pib_pc1);
+    printf("| SuperPoder: %-24.2f |\n", superpoder1);
     printf("========================================\n");
 
     // -- CARTA 2 --
@@ -177,9 +177,9 @@ int main (){
     printf("| Área: %-31s |\n", str_area2); // Imprimindo a frase montada
     printf("| PIB: %-32s |\n", str_pib2);   // Imprimindo a frase montada
     printf("| Nº de Pontos Turísticos: %-11d |\n", n_pontos2);
-    printf("| Dens. Populacional: %-18s |\n", str_densi2);
-    printf("| PIB per Capita: R$%-18.2f |\n", pib_pc2);
-    printf("| SuperPoder %-24.2f |\n", superpoder2);
+    printf("| Dens. Populacional: %-17s |\n", str_densi2);
+    printf("| PIB per Capita: R$ %-17.2f |\n", pib_pc2);
+    printf("| SuperPoder: %-24.2f |\n", superpoder2);
     printf("========================================\n");
 
 
