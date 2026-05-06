@@ -1,4 +1,4 @@
-//Nivel Aventureiro
+//Nivel Mestre
 
 /* 
     //CADA CARTA DEVERÁ CONTER
@@ -9,7 +9,10 @@
     Área (em km²): A área da cidade em quilômetros quadrados. 
     PIB: O Produto Interno Bruto da cidade. 
     Número de Pontos Turísticos: A quantidade de pontos turísticos na cidade. 
-*/
+    SuperPoder: somando todos os atributos numéricos (população, área, PIB, 
+    número de pontos turísticos, PIB per capita e o inverso da densidade 
+    populacional – quanto menor a densidade, maior o "poder"). Armazene 
+    o Super Poder como float.
 
 /*
     Para gerar uma interface que entregue a carta como quadrado se utilizou simobolos de iguais
@@ -35,12 +38,14 @@ int main (){
     int populacao1, n_pontos1;
     float area1, pib1;
     float densidade1, pib_pc1;
+    float superpoder1;
 
     // -- CARTA 2 --
     char estado2, cod_carta2[3], nome_cidade2[20];
     int populacao2, n_pontos2;
     float area2, pib2;
     float densidade2, pib_pc2;
+    float superpoder2;
 
 
 
@@ -86,6 +91,8 @@ int main (){
     densidade1 = (float) populacao1 / area1;
     // Calculo PIB Per Capita CARTA 1 com conversão de dados
     pib_pc1 = (float) (pib1 * 1000000000.0) / populacao1;
+    // Calculo SuperPoder CARTA 1 com conversão de dados;
+    superpoder1 = (float) populacao1 + area1 + pib1 + (float)n_pontos1 + pib_pc1 + (1.0 / densidade1);
 
     // -- CARTA 2 --
     // Orientações
@@ -121,6 +128,8 @@ int main (){
     densidade2 = (float) populacao2 / area2;
     // Calculo PIB Per Capita CARTA 2 com conversão de dados
     pib_pc2 = (float) (pib2 * 1000000000.0) / populacao2;  
+    // Calculo SuperPoder CARTA 2 com conversão de dados;
+    superpoder2 = (float) populacao2 + area2 + pib2 + (float)n_pontos2 + pib_pc2 + (1.0 / densidade2);
 
     // Organização Interface Carta dentro da frase com spritf
     /*
@@ -154,8 +163,9 @@ int main (){
     printf("| Área: %-31s |\n", str_area1); // Imprimindo a frase montada
     printf("| PIB: %-32s |\n", str_pib1);   // Imprimindo a frase montada
     printf("| Nº de Pontos Turísticos: %-11d |\n", n_pontos1);
-    printf("| Dens. Populacional: %-17s |\n", str_densi1);
+    printf("| Dens. Populacional: %-18s |\n", str_densi1);
     printf("| PIB per Capita: R$%-18.2f |\n", pib_pc1);
+    printf("| SuperPoder %-24.2f |\n", superpoder1);
     printf("========================================\n");
 
     // -- CARTA 2 --
@@ -167,9 +177,39 @@ int main (){
     printf("| Área: %-31s |\n", str_area2); // Imprimindo a frase montada
     printf("| PIB: %-32s |\n", str_pib2);   // Imprimindo a frase montada
     printf("| Nº de Pontos Turísticos: %-11d |\n", n_pontos2);
-    printf("| Dens. Populacional: %-17s |\n", str_densi2);
+    printf("| Dens. Populacional: %-18s |\n", str_densi2);
     printf("| PIB per Capita: R$%-18.2f |\n", pib_pc2);
+    printf("| SuperPoder %-24.2f |\n", superpoder2);
     printf("========================================\n");
 
-    return 0;
+
+    // Comparação de todos atributos comparaveis (densidade populacional invertida)
+
+    // Comparação de todos atributos (1 = Carta 1 venceu, 0 = Carta 2 venceu)
+    int res_populacao = populacao1 > populacao2;
+    int res_area = area1 > area2;
+    int res_pib = pib1 > pib2;
+    int res_pontos = n_pontos1 > n_pontos2;     
+    int res_pib_pc = pib_pc1 > pib_pc2;
+    int res_super = superpoder1 > superpoder2;
+    
+    //A regra da densidade é invertida (menor vence)
+    int res_densidade = densidade1 < densidade2; 
+   
+
+    // Saída de Dados das Comparações
+    // O primeiro %d faz a matemática (2 - resultado) para imprimir Carta 1 ou Carta 2
+    // O segundo %d imprime o resultado cru (1 ou 0)
+    // O %-18s reserva a caixa da esquerda, e empurra o resto para a direita
+    // Saída de Dados das Comparações
+    printf("\n============== Comparação ==============\n");
+    printf("| %-18sCarta %d venceu (%d)   |\n", "População:", 2 - res_populacao, res_populacao);
+    printf("| %-18sCarta %d venceu (%d)  |\n", "Área:", 2 - res_area, res_area);
+    printf("| %-18sCarta %d venceu (%d) |\n", "PIB:", 2 - res_pib, res_pib);
+    printf("| %-18sCarta %d venceu (%d)  |\n", "Pts Turísticos:", 2 - res_pontos, res_pontos);
+    printf("| %-18sCarta %d venceu (%d) |\n", "Densidade:", 2 - res_densidade, res_densidade);
+    printf("| %-18sCarta %d venceu (%d) |\n", "PIB per Capita:", 2 - res_pib_pc, res_pib_pc);
+    printf("| %-18sCarta %d venceu (%d) |\n", "Super Poder:", 2 - res_super, res_super);
+    printf("========================================\n");
+
 }
